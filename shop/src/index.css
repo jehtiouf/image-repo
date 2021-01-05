@@ -1,0 +1,16 @@
+
+:root{
+  --primary: #50B83C;
+  --secondary: #173630;
+  --error: #ff4a4a;
+}
+
+/* base styles & title */
+body{
+  font-family: "Noto Serif";
+  color: var(--secondary);
+}
+.App{
+  max-width: 960px;
+  margin: 0 auto;
+}
