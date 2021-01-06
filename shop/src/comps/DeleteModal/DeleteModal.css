@@ -1,0 +1,49 @@
+.backdrop-2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+  }
+  .backdrop-2 .modal{
+    position: absolute;
+    top: 30%;
+    left: 35%;  
+    max-width: 60%;
+    max-height: 80%;
+    width: 450px;
+    height:100px;
+    background-color: whitesmoke;
+    border: 2px solid #108043;
+    border-radius: 10px;
+}
+
+.modal h3{
+    font-weight: bold;
+    text-align: center;
+    color: var(--secondary);
+    margin-bottom:0;
+}
+
+.button-yes{
+    margin-top:15px;
+    margin-left: 38%;
+    margin-right:10px;
+}
+
+.button-modal{
+    border: 2px solid #173630;
+    border-radius: 20%;
+    background-color: #E3F1DF
+    ;
+}
+.button-modal:hover{
+    background-color: #BBE5B3;
+}
+
+.fileName{
+    font-size: 0.8em;
+    margin-top:0;
+    text-align: center;
+}

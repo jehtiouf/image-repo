@@ -9,6 +9,7 @@ const Uploader = () => {
     const types = ['image/png','image/jpeg'];
     const fileUpload = async(e) => {
         let selectedFile = e.target.files[0];
+        console.log(selectedFile);
         if(selectedFile && types.includes(selectedFile.type)){
             setFile(selectedFile)
             setError('');
