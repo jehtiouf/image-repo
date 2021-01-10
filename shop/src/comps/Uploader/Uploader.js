@@ -9,7 +9,6 @@ const Uploader = () => {
     const types = ['image/png','image/jpeg'];
     const fileUpload = async(e) => {
         let selectedFile = e.target.files[0];
-        console.log(selectedFile);
         if(selectedFile && types.includes(selectedFile.type)){
             setFile(selectedFile)
             setError('');
@@ -21,7 +20,7 @@ const Uploader = () => {
 
     return(
         <form>
-            <label>
+            <label className="add-button">
             <input type='file' onChange={fileUpload}/>
             <span>+</span>
             </label>

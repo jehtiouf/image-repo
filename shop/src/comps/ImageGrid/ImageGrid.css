@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-gap: 40px;
+    z-index: 0.5;
   }
   .img-wrap{
     overflow: hidden;
@@ -39,6 +40,6 @@
     outline:none;
   }
   button:hover{
-    color:#212B36
+    color:#212B36;
     ;
   }

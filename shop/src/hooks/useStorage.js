@@ -1,14 +1,16 @@
 import {useState, useEffect} from 'react';
 import {storage, db, timeStamp} from '../firebase/config';
+import {useAuth} from '../comps/Authentication/AuthContext';
 
 const useStorage = (file) => {
     const[progress,setProgress] = useState(0);
     const[error,setError] = useState(null);
     const[fileUrl,setFileUrl] = useState(null);
+    const {currentUser} = useAuth();
 
     useEffect(() => {
        const storageRef = storage.ref(file.name);
-       const collectionRef = db.collection('images');
+       const collectionRef = db.collection(currentUser.email);
 
        storageRef.put(file).on('state_changed', (snap) => {
            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;

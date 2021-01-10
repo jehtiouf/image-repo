@@ -3,13 +3,15 @@ import useDb from '../../hooks/useDb';
 import {motion} from 'framer-motion';
 import './ImageGrid.css'
 import DeleteModal from '../DeleteModal/DeleteModal';
+import {useAuth} from '../Authentication/AuthContext';
 
-const ImageGrid = ({setSelectedImg}) =>
+const ImageGrid = ({setSelectedImg, userSelected}) =>
 {
-    const {docs} = useDb('images');
+    const {docs} = useDb(userSelected);
     const [deleteImg, setDeleteImg] = useState(null);
     const [deleteStorage, setDeleteStorage] = useState(null);
-    
+    const {currentUser} = useAuth();
+
     const onDelete = (id,fileName) =>
     {
         setDeleteStorage(fileName);
@@ -27,10 +29,10 @@ const ImageGrid = ({setSelectedImg}) =>
                     initial={{opacity:0}}
                     animate={{opacity:1}}
                     transition={{delay:0.5}}/>
-               <motion.button className="button"
+               {currentUser.email == userSelected && <motion.button className="button"
                 whileHover={{scale:1.5}}
                 onClick={()=>onDelete(doc.id,doc.fileName)}
-                >x</motion.button>
+                >x</motion.button>}
                 </motion.div>
             ))}
             {deleteImg && <DeleteModal deleteStorage={deleteStorage} 

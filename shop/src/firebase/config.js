@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 firebase.initializeApp({
     "projectId": "shop-img-repo",
@@ -15,6 +16,7 @@ firebase.initializeApp({
   const storage = firebase.storage();
   const db = firebase.firestore();
   const timeStamp = firebase.firestore.FieldValue.serverTimestamp;
+  const auth = firebase.auth();
 
-  export { storage, db , timeStamp};
+  export { storage, db , timeStamp, auth};
   

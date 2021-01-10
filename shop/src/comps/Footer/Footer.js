@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className="footer">
-            <p> © Made for Shopify by Jason Tiou-Fat</p>
+            <p> © Made by Jason Tiou-Fat</p>
         </div>
     )
 }

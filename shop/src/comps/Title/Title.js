@@ -1,14 +1,20 @@
 import React from 'react';
 import './Title.css';
+import {NavLink} from 'react-router-dom';
+import {useAuth} from '../Authentication/AuthContext';
 
-const Title = () => {
+const Title = ({userSelected}) => {
+  const {currentUser} = useAuth();
   return (
     <div className="title">
-      <h1>MyShopify</h1>
-      <h2>Image repository</h2>
-      <p>Welcome to MyShopify Image repo which is not at all like Instagram.</p>
+      <div className="right">
+      <p className="right">Logged in as {currentUser.email}</p>
+      <NavLink to='/logout' >Logout</NavLink>
+      </div>
+      <h2>Image Repository</h2>
+      <p>A place to share & view other people's photography. </p>
     </div>
   )
 }
 
-export default Title; 
+export default Title;

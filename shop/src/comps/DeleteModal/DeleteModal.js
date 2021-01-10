@@ -1,7 +1,11 @@
 import React from 'react';
 import './DeleteModal.css';
 import {storage, db} from '../../firebase/config';
+import {useAuth} from '../Authentication/AuthContext';
+
 const DeleteModal = ({deleteStorage, setDeleteStorage, deleteImg, setDeleteImg}) => {
+    const { currentUser } = useAuth();
+
     const closeModal = (e) => {
         setDeleteImg(null);
         setDeleteStorage(null);
@@ -12,7 +16,7 @@ const DeleteModal = ({deleteStorage, setDeleteStorage, deleteImg, setDeleteImg})
         storageRef.delete().then(function(){
             setDeleteStorage(null);
         });
-        db.collection("images").doc(deleteImg).delete().then(function(){
+        db.collection(currentUser.email).doc(deleteImg).delete().then(function(){
             setDeleteImg(null);
         });
     }
