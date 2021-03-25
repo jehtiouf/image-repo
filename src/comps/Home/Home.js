@@ -4,7 +4,8 @@ import Title from '../Title/Title';
 import Uploader from '../Uploader/Uploader';
 import Modal from '../ImageModal/ImageModal';
 import DropDownMenu, { selectedUser } from '../DropDownMenu/DropDownMenu';
-import {useAuth} from '../Authentication/AuthContext'
+import {useAuth} from '../Authentication/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     const[selectedImg,setSelectedImg] = useState(null);
@@ -14,6 +15,11 @@ const Home = () => {
 
     return (
       <div >
+        <div>
+            <Helmet>
+                <title>Image Repo | {userName}'s</title>
+            </Helmet>
+        </div>
         <Title userSelected={userSelected} />
         <DropDownMenu userName={userName} setUserName={setUserName} selectedUser={userSelected} setUserSelected={setUserSelected}/>
         {currentUser.email == userSelected && <Uploader/>}  

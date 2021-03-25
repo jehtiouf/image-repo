@@ -1,34 +1,74 @@
 .center{
-    text-align: center;
-    
+    text-align: center;    
 }
 
-.form-control {
-    height: 10%;
-    width:50%;
-    border-radius: 0;
-    background-color:#F4F6F8 ;
-    border-color: #F9FAFB;
-    border-width: 1px;
+.form-group {
+    height:10px;
+    width:100%;
     margin-top:10px;
     color:#212B36;
     text-align: center;
     font-size:1em;
-    
+    font-style: "Verdana";
+  }
+
+  .input-auth{
+      background-color: #f1f1f1;
+      opacity: 0.8;
+      border: solid grey 1px;
+      border-radius: 3px;
+      width: 80%;
+      height: 30px;
   }
 
 .form-label{
     color: #108043;
     font-weight: bold;
-    font-size:1.2em;
-    font-style: "Roboto";
+    font-size:1.3em;
+    font-style: "Verdana";
+    left:0;
 }
 
 .container-wrapper{
-    margin-top:5%;
-    margin-bottom:5%;
-    margin-left: 30%;
-    border:black solid 2px;
-    width:40%;
-    box-shadow: 5px 10px #454F5B;
+    margin-top:2%;
+    margin-left: 35%;
+    border: #37393a46 solid 1px;
+    width:35%;
+    height: 50%;
+    text-align: center;
 }
+
+.card-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+}
+
+.btn-auth{
+    width: 82%;
+    height: 30px;
+    background-color: #50B83C;
+    opacity: 0.8;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.0em;
+    font-family: "sans-serif";
+}
+.icon-auth{
+    margin-top:5%;
+    margin-bottom: 0;
+    width: 25%;
+    height: auto;
+}
+
+.error{
+    font:#ed4956;
+    font-size: 0.9em;
+}
+
+.success{
+    font:#5ced49;
+    font-size: 0.9em;
+}
+
+

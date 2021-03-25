@@ -3,6 +3,7 @@ import {Form, Button, Card, Alert} from 'react-bootstrap';
 import {Link , useHistory} from 'react-router-dom';
 import { useAuth } from "./AuthContext"
 import {db,timeStamp} from "../../firebase/config"
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
     const emailRef = useRef();
@@ -14,6 +15,7 @@ const SignUp = () => {
     const history = useHistory();
     const { currentUser, signup } = useAuth();
     const createdAt = timeStamp();
+    const signUpIcon = require('../../Assets/signup.png')
     
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -24,14 +26,14 @@ const SignUp = () => {
         }
         else{
         try{
-         setError('');
+         setError('');  
          setLoading(true);
          db.collection("listOfUsers").doc(emailRef.current.value).set({name,createdAt});   
          await signup(emailRef.current.value,passwordRef.current.value);
          history.push("/login")
          alert("Account succesfully created!");
         } catch {
-            setError("Failed to create an acconut");
+            setError("Failed to create an account.");
         }
         setLoading(false);
         }
@@ -40,47 +42,42 @@ const SignUp = () => {
     return (
        <div className="center">
             <div>
-                <h1 className="text-center mb-4"> Create new account </h1>
-                <p>Welcome. <br/> Please create a new account to able to share and view other people's photography</p>
-                {error && <Alert> {error} </Alert>}
+                <Helmet>
+                    <title>Image Repo | SignUp</title>
+                </Helmet>
+            </div>
+            <div>
                 <div className="container-wrapper">
-                <Form onSubmit = {handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Name</Form.Label>
-                        <br/>
-                        <Form.Control ref={nameRef} required/>
-                    </Form.Group>
-                    <Form.Group id="email">
-                        <br/>
-                        <Form.Label>Email</Form.Label>
-                        <br/>
-                        <Form.Control  type="email" ref={emailRef} required/>
-                        <br/>
-                    </Form.Group>
+                    <img className="icon-auth" src={signUpIcon}/>
+                    <p>Sign up to share and view photos from your friends <span>{'\u{1F4F8}'}</span></p>
+                    <Form onSubmit = {handleSubmit}>
+                        <div className="card-container">
+                            <Form.Control className="input-auth" placeholder="Full Name" ref={nameRef} required/>
+                        </div>
 
-                    <Form.Group id="password">
-                        <br/>
-                        <Form.Label>Password</Form.Label>
-                        <br/>
-                        <Form.Control type="password" ref={passwordRef} required/>
-                    </Form.Group>
+                        <div className="card-container" id="email">
+                            <Form.Control className="input-auth" placeholder="Email" type="email" ref={emailRef} required/>
+                        </div>
 
-                    <Form.Group id="password-confirm">
-                        <br/>
-                        <Form.Label>Password Confirmation</Form.Label>
-                        <br/>
-                        <Form.Control type="password" ref={passwordConfirmRef} required/>
-                    </Form.Group>
-                    <br/>
-                    <Button className="myButton" disabled={loading} className="w-100" type="submit">Create acconut</Button>
-                </Form> 
+                        <div className="card-container" id="password">                      
+                            <Form.Control className="input-auth" placeholder="Password" type="password" ref={passwordRef} required/>
+                        </div>
+
+                        <div className="card-container" id="password-confirm">
+                            <Form.Control className="input-auth" placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required/>
+                        </div>
+
+                        <div className="card-container">
+                            <Button className="btn-auth" disabled={loading} type="submit">Sign Up</Button>
+                        </div>
+                        {error && <Alert className="error"> {error} </Alert>}
+                    </Form> 
                 </div>
             </div>
-            <br/>
-            <div className="w-100 text-center mt-2">
-            Already have an account? 
-            <br/>
-            <Link to = '/login' >Login</Link>
+            <div className="container-wrapper">
+                <div className="card-container">
+                    Already have an account? <Link to = '/login' >Log In</Link>
+                </div>
             </div>
         </div>
 )}

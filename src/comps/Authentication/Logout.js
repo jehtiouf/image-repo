@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {Form, Button, Card, Alert} from 'react-bootstrap';
-import {NavLink, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useAuth} from './AuthContext';
+import { Helmet } from 'react-helmet';
 
 const Logout = () => {
     const emailRef = useRef();
@@ -25,15 +26,21 @@ const Logout = () => {
     }
     return (
         <>
-         <div class="center">
-            <div>
-                {error && <Alert> {error} </Alert>}
-                <Form onSubmit = {handleSubmit}>
-                    <Button disabled={loading} className="w-100" type="submit">Logout</Button> 
-                </Form> 
-            </div>
-            <NavLink to='/'>Back</NavLink>
+        <div>
+            <Helmet>
+                <title>Image Repo | Logout</title>
+            </Helmet>
         </div>
+            <div className="container-wrapper">
+                <p> Are you sure you want to Log Out?</p>
+                <Form onSubmit = {handleSubmit}>
+                    <div className="card-container">
+                    <Button className="btn-auth" disabled={loading} type="submit">Log Out</Button>
+                    </div> 
+                    {error && <Alert> {error} </Alert>}
+                </Form> 
+                <Link to='/'>Back To Home </Link>
+            </div>
         </>
 )}
 

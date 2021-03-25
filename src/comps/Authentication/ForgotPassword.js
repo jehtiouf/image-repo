@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "./AuthContext"
 import { Link } from "react-router-dom"
+import { Helmet } from 'react-helmet';
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -9,6 +10,7 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
+  var resetImage = require('../../Assets/forgot-password.jpg')
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -20,7 +22,7 @@ export default function ForgotPassword() {
       await resetPassword(emailRef.current.value)
       setMessage("Email sent to "+ emailRef.current.value)  
     } catch {
-      setError("Failed to reset password")
+      setError("Looks like we don't have that email in our database.")
     }
 
     setLoading(false)
@@ -28,34 +30,42 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <div className="center">
+      <div>
+            <Helmet>
+                <title>Image Repo | Forgot Password</title>
+            </Helmet>
+      </div>
+      <div className="card-layout">
         <div>
-          <h1 className="text-center mb-4">Password Reset</h1>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
           <div className="container-wrapper">
+            <img className="icon-auth" src={resetImage}/>
+            <h3>Trouble Logging In?</h3>
+            <p> Enter your email and we'll send you a link to get you back into your account. <span>{'\u{1F511}'}</span> </p>
           <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <br/>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <br/>
-            <Button disabled={loading} className="w-100" type="submit">
-              Reset Password
-            </Button>
+            <div class="card-container" id="email">
+              <Form.Control className="input-auth" placeholder="Email" type="email" ref={emailRef} required />
+            </div>
+            <div className="card-container">
+              <Button disabled={loading} className="btn-auth" type="submit">
+                Send Login Link
+              </Button>
+            </div>
+            {error && <Alert className="error">{error}</Alert>}
+            {message && <Alert className="success">{message}</Alert>} 
           </Form>
-          </div>
-          <div className="w-100 text-center mt-3">
-            <Link to="/login">Login</Link>
-          </div>
         </div>
-      <div className="w-100 text-center mt-2">
-        <br/>
-        Need an account? <Link to="/signup">Sign Up</Link>
+        <div className="container-wrapper">
+            <div className="card-container">
+              Already have an account? <Link to="/login">Login</Link>
+            </div>
+              OR 
+            <div className="card-container">
+              <Link to="/signup">Create New Account </Link>
+            </div>
+          </div>
+        </div>     
       </div>
-      </div>
-     
+
     </>
   )
 }
