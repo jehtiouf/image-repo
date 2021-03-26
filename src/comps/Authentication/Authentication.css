@@ -30,8 +30,8 @@
 }
 
 .container-wrapper{
-    margin-top:2%;
-    margin-left: 35%;
+    margin:auto;
+    margin-top: 2%;
     border: #37393a46 solid 1px;
     width:35%;
     height: 50%;

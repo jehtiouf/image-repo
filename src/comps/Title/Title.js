@@ -11,8 +11,8 @@ const Title = ({userSelected}) => {
       <p className="right">Logged in as {currentUser.email}</p>
       <NavLink to='/logout' >Logout</NavLink>
       </div>
-      <h2>Image Repository</h2>
-      <p>A place to share & view other people's photography. </p>
+      <h4>Welcome to notInstagram!<span>{'\u{1F44B}'}</span></h4>
+      <h4></h4>
     </div>
   )
 }

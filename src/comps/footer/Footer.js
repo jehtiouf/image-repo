@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className="footer">
-            <p> © Made by Jason Tiou-Fat</p>
+            <p> <span>{'\u{00A9}'}</span> 2021 notInstagram from jehtiouf</p>
         </div>
     )
 }

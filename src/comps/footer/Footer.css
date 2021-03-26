@@ -1,5 +1,10 @@
 .footer{
-    margin-left:43%;
-    margin-top:30%;
-    margin-bottom:5%;
+    margin: auto;
+    margin-top: 20%;
+    margin-bottom: 5%;
+    width:50%;
+    font-size:1rem;
+    text-align: center;
+   
 }
+
