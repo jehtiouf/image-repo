@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Form, Button, Card, Alert} from 'react-bootstrap';
+import {Form, Button, Alert} from 'react-bootstrap';
 import {Link , useHistory} from 'react-router-dom';
 import { useAuth } from "./AuthContext"
 import {db,timeStamp} from "../../firebase/config"
@@ -13,7 +13,7 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    const { currentUser, signup } = useAuth();
+    const { signup } = useAuth();
     const createdAt = timeStamp();
     const signUpIcon = require('../../Assets/signup.png')
     
@@ -48,7 +48,7 @@ const SignUp = () => {
             </div>
             <div>
                 <div className="container-wrapper">
-                    <img className="icon-auth" src={signUpIcon}/>
+                    <img className="icon-auth" src={signUpIcon} alt="User Icon"/>
                     <p>Sign up to share and view photos from your friends <span>{'\u{1F4F8}'}</span></p>
                     <Form onSubmit = {handleSubmit}>
                         <div className="card-container">

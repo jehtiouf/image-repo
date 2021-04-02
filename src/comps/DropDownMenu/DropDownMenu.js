@@ -1,7 +1,6 @@
-import React, { useRef,useState } from "react";
+import React, { useRef} from "react";
 import "./DropDownMenu.css";
 import { useDetectOutsideClick } from "./UseDetectOutsideClick.js";
-import {useAuth} from '../Authentication/AuthContext';
 import useDb from '../../hooks/useDb';
 
 const DropDownMenu = ({userName, setUserName, userSelected, setUserSelected}) => {
@@ -9,7 +8,6 @@ const DropDownMenu = ({userName, setUserName, userSelected, setUserSelected}) =>
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const onClick = () => setIsActive(!isActive);
   const {docs} = useDb("listOfUsers");
-  const {currentUser} = useAuth();
   const handleClick = (name,id) => 
   {
     setUserSelected(id);

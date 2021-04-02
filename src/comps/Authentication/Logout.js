@@ -1,15 +1,14 @@
-import React, {useRef, useState} from 'react';
-import {Form, Button, Card, Alert} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Form, Button, Alert} from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
 import {useAuth} from './AuthContext';
 import { Helmet } from 'react-helmet';
 
 const Logout = () => {
-    const emailRef = useRef();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    const { currentUser, logout } = useAuth()
+    const {logout } = useAuth()
 
     const handleSubmit = async(e) => {
         e.preventDefault();

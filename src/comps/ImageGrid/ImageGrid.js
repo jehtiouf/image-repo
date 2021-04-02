@@ -29,7 +29,7 @@ const ImageGrid = ({setSelectedImg, userSelected}) =>
                     initial={{opacity:0}}
                     animate={{opacity:1}}
                     transition={{delay:0.5}}/>
-               {currentUser.email == userSelected && <motion.button className="button"
+               {currentUser.email === userSelected && <motion.button className="button"
                 whileHover={{scale:1.5}}
                 onClick={()=>onDelete(doc.id,doc.fileName)}
                 >x</motion.button>}

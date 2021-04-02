@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Form, Button, Card, Alert} from 'react-bootstrap';
-import {auth} from '../../firebase/config';
+import {Form, Button, Alert} from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
 import {useAuth} from './AuthContext';
 import { Helmet } from 'react-helmet';
@@ -38,7 +37,7 @@ const Login = () => {
         <div>
             <div>
                 <div className="container-wrapper">
-                    <img className="icon-auth" src={loginImage}/>
+                    <img className="icon-auth" src={loginImage} alt="User Login"/>
                     <Form onSubmit = {handleSubmit}>
                         <div class="card-container" id="email">
                             <Form.Control className="input-auth" placeholder="Email" type="email" ref={emailRef} required/>

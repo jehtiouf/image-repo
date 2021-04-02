@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import SignUp from './comps/Authentication/SignUp'
 import {AuthProvider} from './comps/Authentication/AuthContext';
 import Home from './comps/Home/Home'

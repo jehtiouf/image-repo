@@ -3,7 +3,7 @@ import ImageGrid from '../ImageGrid/ImageGrid';
 import Title from '../Title/Title';
 import Uploader from '../Uploader/Uploader';
 import Modal from '../ImageModal/ImageModal';
-import DropDownMenu, { selectedUser } from '../DropDownMenu/DropDownMenu';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import {useAuth} from '../Authentication/AuthContext';
 import { Helmet } from 'react-helmet';
 
@@ -22,7 +22,7 @@ const Home = () => {
         </div>
         <Title userSelected={userSelected} />
         <DropDownMenu userName={userName} setUserName={setUserName} selectedUser={userSelected} setUserSelected={setUserSelected}/>
-        {currentUser.email == userSelected && <Uploader/>}  
+        {currentUser.email === userSelected && <Uploader/>}  
         <ImageGrid setSelectedImg = {setSelectedImg} userSelected={userSelected}/>
         {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg = {setSelectedImg }/> }
       </div>
